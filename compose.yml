@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:17-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["bin/setup"]
+    volumes:
+      - .:/rails
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+
+volumes:
+  db_data:
+  bundle_data:
