@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <% flash.each do |type, message| %>
+    <p style="color:<%= type == 'alert' ? 'red' : 'green' %>">
+      <%= message %>
+    </p>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<tr id="<%= dom_id(profile) %>">
+  <td><%= profile.name %></td>
+  <td><%= profile.github_url %></td>
+  <td>
+    <%= link_to t("#{translation_scope}.view_profile"), profile %> |
+    <%= link_to t("#{translation_scope}.edit"), edit_profile_path(profile, from: 'index') %>
+  </td>
+</tr>

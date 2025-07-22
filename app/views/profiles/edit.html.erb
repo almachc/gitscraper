@@ -1,0 +1,19 @@
+<% content_for :title, t('.title') %>
+
+<h1><%= t('.title') %></h1>
+
+<% if alert %>
+  <p style="color: red"><%= flash[:alert] %></p>
+<% end %>
+
+<% if notice %>
+  <p style="color: green"><%= flash[:notice] %></p>
+<% end %>
+
+<%= render 'form', profile: @profile %>
+
+<br>
+
+<div>
+  <%= link_to t('.back'), @from == 'index' ? profiles_path : @profile %>
+</div>

@@ -1,0 +1,7 @@
+<% if @profile.valid? %>
+  <%= turbo_stream.replace dom_id(@profile),
+                           partial: 'profiles/profile',
+                           locals: { profile: @profile } %>
+<% end %>
+
+<%= turbo_stream.replace 'flash', partial: 'shared/flash' %>

@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= Profile.human_attribute_name(:name) %></th>
+      <th><%= Profile.human_attribute_name(:github_url) %></th>
+      <th><%= t('.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody id="profiles">
+    <% @profiles.each do |profile| %>
+      <%= render 'row', profile: profile, translation_scope: translation_scope %>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  table, th, td {
+    border:1px solid black;
+  }
+</style>

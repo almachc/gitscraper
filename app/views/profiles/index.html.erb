@@ -1,0 +1,15 @@
+<% content_for :title, t('.title') %>
+
+<%= turbo_frame_tag 'flash' do %>
+  <%= render 'shared/flash' %>
+<% end %>
+
+<div>
+  <h1><%= t('.title_new_profile') %></h1>
+  <%= render 'form', profile: Profile.new %>
+<div>
+
+<div>
+  <h1><%= t('.title_list') %></h1>
+  <%= render 'profiles/list', profiles: @profiles, translation_scope: 'profiles.index' %>
+</div>

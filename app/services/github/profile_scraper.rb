@@ -22,7 +22,7 @@ module Github
 
       profile_data = extract_text_from_elements(document).merge(
         avatar_url: extract_avatar_url(document),
-        contributions_count: extract_contributions(document)
+        contributions_12mo_count: extract_contributions(document)
       )
 
       success_result(profile_data)

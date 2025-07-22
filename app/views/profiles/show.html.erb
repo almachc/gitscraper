@@ -1,0 +1,27 @@
+<%= turbo_frame_tag 'flash' do %>
+  <%= render 'shared/flash' %>
+<% end %>
+
+<%= turbo_frame_tag dom_id(@profile) do %>
+  <%= render @profile %>
+<% end %>
+
+<div class="actions-inline">
+  <%= button_to t('.rescan'),
+                rescan_profile_path(@profile),
+                data: { turbo_frame: dom_id(@profile) },
+                method: :patch %>
+
+  <%= link_to t('.edit'), edit_profile_path(@profile, from: 'show') %>
+
+  <%= button_to t('.destroy'), @profile, method: :delete %>
+
+  <%= link_to t('.back'), profiles_path %>
+</div>
+
+<style>
+  .actions-inline > * {
+    display: inline-block;
+    margin-right: 8px;
+  }
+</style>

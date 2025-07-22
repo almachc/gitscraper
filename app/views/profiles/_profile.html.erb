@@ -1,0 +1,20 @@
+<div id="<%= dom_id profile %>">
+  <%= image_tag(profile.avatar_url, width: 150) %>
+
+  <% %i[
+    name
+    github_url
+    username
+    followers_count
+    following_count
+    stars_count
+    contributions_12mo_count
+    organization
+    location
+  ].each do |attribute| %>
+    <p>
+      <strong><%= Profile.human_attribute_name(attribute) %>:</strong>
+      <%= profile.public_send(attribute) %>
+    </p>
+  <% end %>
+</div>

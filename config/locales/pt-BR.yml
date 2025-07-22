@@ -1,0 +1,59 @@
+pt-BR:
+  helpers:
+    submit:
+      profile:
+        create: Criar perfil
+        update: Atualizar perfil
+  activerecord:
+    models:
+      profile: Perfil
+    attributes:
+      profile:
+        name: Nome
+        github_url: URL
+        username: Usuário
+        avatar_url: Avatar
+        followers_count: Seguidores
+        following_count: Seguindo
+        stars_count: Estrelas
+        contributions_12mo_count: Contribuições no último ano
+        organization: Organização
+        location: Localização
+    errors:
+      messages:
+        taken: já está em uso
+        blank: não pode ficar em branco
+  profiles:
+    show:
+      rescan: Re-escanear
+      edit: Editar
+      destroy: Deletar
+      back: Voltar
+      destroy_confirmation: Tem certeza que deseja deletar este perfil?
+    create:
+      success: Perfil criado com sucesso!
+    destroy:
+      success: Perfil deletado com sucesso!
+    edit:
+      back: Voltar
+      title: Edição
+    update:
+      success: Perfil editado com sucesso!
+    rescan:
+      success: Scraping realizado com sucesso!
+      failure: Falha no scraping
+    index:
+      view_profile: 'Visualizar'
+      edit: Editar
+      actions: Ações
+      title_list: Listagem de perfis
+      title_new_profile: Novo perfil
+    form:
+      errors:
+        title:
+          one: 1 erro precisa ser corrigido
+          other: "%{count} erros precisam ser corrigidos"
+    errors:
+      profile_not_found: Perfil do GitHub não encontrado
+      missing_github_url: A URL do GitHub não pode estar em branco
+      api_error: Um erro inesperado ocorreu ao tentar buscar o perfil do GitHub
