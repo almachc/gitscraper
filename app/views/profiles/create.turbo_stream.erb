@@ -2,6 +2,10 @@
   <%= render 'profiles/row', profile: @profile, translation_scope: 'profiles.index' %>
 <% end %>
 
-<%= turbo_stream.replace 'flash' do %>
-  <%= render 'shared/flash' %>
+<%= turbo_stream.replace 'message' do %>
+  <%= render 'shared/message', notice: t('.success') %>
+<% end %>
+
+<%= turbo_stream.replace 'new_profile_form' do %>
+  <%= render 'form', profile: Profile.new %>
 <% end %>

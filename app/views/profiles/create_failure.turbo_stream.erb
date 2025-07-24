@@ -1,0 +1,9 @@
+<% if @alert_message %>
+  <%= turbo_stream.replace 'message' do %>
+    <%= render 'shared/message', alert: @alert_message %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace 'new_profile_form' do %>
+  <%= render 'form', profile: @profile %>
+<% end %>

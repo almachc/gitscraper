@@ -1,7 +1,9 @@
-<% if flash.any? %>
-  <% flash.each do |type, message| %>
-    <p style="color:<%= type == 'alert' ? 'red' : 'green' %>">
-      <%= message %>
-    </p>
+<%= turbo_frame_tag 'flash' do %>
+  <% if flash[:notice].present? %>
+    <p style="color: green"><%= flash[:notice] %></p>
+  <% end %>
+
+  <% if flash[:alert].present? %>
+    <p style="color: red"><%= flash[:alert] %></p>
   <% end %>
 <% end %>

@@ -1,8 +1,6 @@
 <% content_for :title, t('.title') %>
 
-<%= turbo_frame_tag 'flash' do %>
-  <%= render 'shared/flash' %>
-<% end %>
+<%= render 'shared/message' %>
 
 <div>
   <h1><%= t('.title_new_profile') %></h1>

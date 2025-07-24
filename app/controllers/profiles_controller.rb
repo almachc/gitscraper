@@ -22,16 +22,16 @@ class ProfilesController < ApplicationController
     scraper_result = Github::ProfileScraper.call(@profile.github_url)
 
     unless scraper_result.success?
-      flash.now[:alert] = t(scraper_result.error, scope: 'profiles.errors')
-      return render :new, status: :unprocessable_entity
+      @alert_message = t(scraper_result.error, scope: 'profiles.errors')
+      return render :create_failure, status: :unprocessable_entity
     end
 
     @profile.assign_attributes(scraper_result.data)
 
     if @profile.save
-      flash.now[:notice] = t('.success')
+      render :create
     else
-      render :new, status: :unprocessable_entity
+      render :create_failure, status: :unprocessable_entity
     end
   end
 
