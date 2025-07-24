@@ -1,0 +1,7 @@
+<%= turbo_stream.append 'profiles' do %>
+  <%= render 'profiles/row', profile: @profile, translation_scope: 'profiles.index' %>
+<% end %>
+
+<%= turbo_stream.replace 'flash' do %>
+  <%= render 'shared/flash' %>
+<% end %>

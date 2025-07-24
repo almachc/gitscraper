@@ -30,10 +30,6 @@ class ProfilesController < ApplicationController
 
     if @profile.save
       flash.now[:notice] = t('.success')
-      render turbo_stream: [
-        turbo_stream.append('profiles', partial: 'profiles/row', locals: { profile: @profile }),
-        turbo_stream.replace('flash', partial: 'shared/flash')
-      ]
     else
       render :new, status: :unprocessable_entity
     end
