@@ -55,12 +55,10 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: t('.success') }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @profile.update(profile_params)
+      redirect_to @profile, notice: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

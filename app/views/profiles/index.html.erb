@@ -4,7 +4,9 @@
 
 <div>
   <h1><%= t('.title_new_profile') %></h1>
-  <%= render 'form', profile: Profile.new %>
+  <%= turbo_frame_tag 'new_profile_form' do %>
+    <%= render 'form', profile: Profile.new %>
+  <% end %>
 <div>
 
 <div>
