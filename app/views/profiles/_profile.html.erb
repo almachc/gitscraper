@@ -1,9 +1,13 @@
 <div id="<%= dom_id profile %>">
   <%= image_tag(profile.avatar_url, width: 150) %>
 
+  <p>
+    <strong><%= Profile.human_attribute_name(:github_url) %>:</strong>
+    <%= render_short_link(profile.short_url_mapping) %>
+  </p>
+
   <% %i[
     name
-    github_url
     username
     followers_count
     following_count

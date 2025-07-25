@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_18_230434) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_24_164027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,5 +28,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_18_230434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_profiles_on_username", unique: true
+  end
+
+  create_table "short_url_mappings", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "original_url", null: false
+    t.string "mappable_type"
+    t.bigint "mappable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_short_url_mappings_on_code", unique: true
+    t.index ["mappable_type", "mappable_id"], name: "index_short_url_mappings_on_mappable"
   end
 end

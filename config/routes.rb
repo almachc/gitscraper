@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     patch :rescan, on: :member
   end
 
+  get 'r/:code', to: 'short_url_mappings#redirect', as: :short_redirect
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
