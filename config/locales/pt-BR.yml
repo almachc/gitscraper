@@ -43,7 +43,7 @@ pt-BR:
       success: Scraping realizado com sucesso!
       failure: Falha no scraping
     index:
-      view_profile: 'Visualizar'
+      view_profile: Visualizar
       edit: Editar
       actions: Ações
       title_list: Listagem de perfis
@@ -59,4 +59,4 @@ pt-BR:
       api_error: Um erro inesperado ocorreu ao tentar buscar o perfil do GitHub
   short_url_mappings:
     redirect:
-      url_not_found: 'Url não encontrada'
+      url_not_found: Url não encontrada
