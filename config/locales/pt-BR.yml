@@ -48,6 +48,7 @@ pt-BR:
       actions: Ações
       title_list: Listagem de perfis
       title_new_profile: Novo perfil
+      search_placeholder: Digite o termo da busca ...
     form:
       errors:
         title:

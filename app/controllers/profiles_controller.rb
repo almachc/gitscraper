@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: %i[ show edit update destroy rescan ]
 
   def index
-    @profiles = Profile.all
+    search_params = params.permit(:field, :term).to_h.symbolize_keys
+    @profiles = Profile.search(**search_params).order(created_at: :desc).limit(10)
   end
 
   def show
@@ -36,8 +37,6 @@ class ProfilesController < ApplicationController
   end
 
   def rescan
-    @profile = Profile.find(params[:id])
-
     scraper_result = Github::ProfileScraper.call(@profile.github_url)
 
     unless scraper_result.success?
@@ -77,6 +76,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.expect(profile: [ :name, :github_url ])
+    params.expect(profile: [ :name, :github_url, :field, :term ])
   end
 end

@@ -4,7 +4,12 @@
     <%= render_short_link(profile.short_url_mapping) %>
   </td>
   <td>
-    <%= link_to t("#{translation_scope}.view_profile"), profile %> |
-    <%= link_to t("#{translation_scope}.edit"), edit_profile_path(profile, from: 'index') %>
+    <%= link_to t("#{translation_scope}.view_profile"),
+                profile,
+                data: { turbo_frame: '_top' } %>
+    |
+    <%= link_to t("#{translation_scope}.edit"),
+                edit_profile_path(profile, from: 'index'),
+                data: { turbo_frame: '_top' } %>
   </td>
 </tr>

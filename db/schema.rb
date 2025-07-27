@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_24_164027) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_26_231212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "profiles", force: :cascade do |t|
     t.string "name", null: false
@@ -27,7 +28,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_24_164027) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "to_tsvector('portuguese'::regconfig, (COALESCE(location, ''::character varying))::text)", name: "profiles_location_fts_index", using: :gin
+    t.index "to_tsvector('portuguese'::regconfig, (COALESCE(name, ''::character varying))::text)", name: "profiles_name_fts_index", using: :gin
+    t.index "to_tsvector('portuguese'::regconfig, (COALESCE(organization, ''::character varying))::text)", name: "profiles_organization_fts_index", using: :gin
+    t.index ["github_url"], name: "profiles_github_url_trgm_index", opclass: :gin_trgm_ops, using: :gin
     t.index ["username"], name: "index_profiles_on_username", unique: true
+    t.index ["username"], name: "profiles_username_trgm_index", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "short_url_mappings", force: :cascade do |t|
