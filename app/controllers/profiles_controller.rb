@@ -19,21 +19,17 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    return render_create_failure unless @profile.valid?(:user_input)
 
     scraper_result = Github::ProfileScraper.call(@profile.github_url)
 
     unless scraper_result.success?
       @alert_message = t(scraper_result.error, scope: 'profiles.errors')
-      return render :create_failure, status: :unprocessable_entity
+      return render_create_failure
     end
 
     @profile.assign_attributes(scraper_result.data)
-
-    if @profile.save
-      render :create
-    else
-      render :create_failure, status: :unprocessable_entity
-    end
+    @profile.save ? render(:create) : render_create_failure
   end
 
   def rescan
@@ -77,5 +73,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.expect(profile: [ :name, :github_url, :field, :term ])
+  end
+
+  def render_create_failure
+    render :create_failure, status: :unprocessable_entity
   end
 end

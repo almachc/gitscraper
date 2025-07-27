@@ -9,8 +9,10 @@ class Profile < ApplicationRecord
 
   has_one :short_url_mapping, as: :mappable, dependent: :destroy
 
-  validates :name, :username, :github_url, :avatar_url, :followers_count, :following_count,
-            :stars_count, :contributions_12mo_count, presence: true
+  validates :name, :github_url, presence: true, on: :user_input
+
+  validates :username, :avatar_url, :followers_count, :following_count,
+            :stars_count, :contributions_12mo_count, presence: true, on: :create
 
   validates :username, uniqueness: true
 

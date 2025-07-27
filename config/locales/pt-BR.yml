@@ -56,8 +56,8 @@ pt-BR:
           other: "%{count} erros precisam ser corrigidos"
     errors:
       profile_not_found: Perfil do GitHub não encontrado
-      missing_github_url: A URL do GitHub não pode estar em branco
       api_error: Um erro inesperado ocorreu ao tentar buscar o perfil do GitHub
+      scraped_data_missing: Falha ao buscar os dados do GitHub
   short_url_mappings:
     redirect:
       url_not_found: Url não encontrada

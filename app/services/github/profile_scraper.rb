@@ -11,6 +11,9 @@ module Github
       stars_count: 'a[data-tab-item="stars"] span.Counter'
     }
 
+    REQUIRED_FIELDS = %i[username avatar_url followers_count following_count
+                         stars_count contributions_12mo_count]
+
     def initialize(github_url)
       @github_url = github_url
     end
@@ -24,6 +27,8 @@ module Github
         avatar_url: extract_avatar_url(document),
         contributions_12mo_count: extract_contributions(document)
       )
+
+      return failure_result(:scraped_data_missing) if !valid_scraped_data?(profile_data)
 
       success_result(profile_data)
     rescue Faraday::ResourceNotFound
@@ -60,6 +65,10 @@ module Github
       response = Faraday.get(url, nil, headers)
 
       Nokogiri::HTML(response.body)
+    end
+
+    def valid_scraped_data?(scraped_data)
+      REQUIRED_FIELDS.all? { |field| scraped_data[field].present? }
     end
   end
 end

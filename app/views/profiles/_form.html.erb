@@ -1,27 +1,29 @@
-<%= form_with(model: profile) do |form| %>
-  <% if profile.errors.any? %>
-    <div style="color: red">
-      <h2><%= t('.errors.title', count: profile.errors.count) %>:</h2>
+<div id='new_profile_form'>
+  <%= form_with(model: profile) do |form| %>
+    <% if profile.errors.any? %>
+      <div style="color: red">
+        <h2><%= t('.errors.title', count: profile.errors.count) %>:</h2>
 
-      <ul>
-        <% profile.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% profile.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :name, style: 'display: block' %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div>
+      <%= form.label :github_url, style: 'display: block' %>
+      <%= form.text_field :github_url %>
+    </div>
+
+    <div>
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: 'display: block' %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :github_url, style: 'display: block' %>
-    <%= form.text_field :github_url %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
