@@ -42,6 +42,8 @@ gem "thruster", require: false
 
 gem 'faraday', '~> 2.13', '>= 2.13.2'
 gem 'nokogiri', '~> 1.18', '>= 1.18.8'
+gem 'bootstrap', '~> 5.3', '>= 5.3.5'
+gem 'dartsass-rails', '~> 0.5.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
