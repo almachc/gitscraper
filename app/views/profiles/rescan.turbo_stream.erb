@@ -1,7 +1,13 @@
-<% if @profile.valid? %>
+<% if @profile.errors.any? %>
+  <%= turbo_stream.replace 'message' do %>
+    <%= render 'shared/message', alert: t('.failure') %>
+  <% end %>
+<% else %>
   <%= turbo_stream.replace dom_id(@profile),
                            partial: 'profiles/profile',
                            locals: { profile: @profile } %>
-<% end %>
 
-<%= turbo_stream.replace 'flash', partial: 'shared/flash' %>
+  <%= turbo_stream.replace 'message' do %>
+    <%= render 'shared/message', notice: t('.success') %>
+  <% end %>
+<% end %>

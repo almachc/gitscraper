@@ -1,29 +1,31 @@
 <div id='new_profile_form'>
-  <%= form_with(model: profile) do |form| %>
-    <% if profile.errors.any? %>
-      <div style="color: red">
-        <h2><%= t('.errors.title', count: profile.errors.count) %>:</h2>
+  <%= form_with model: profile, class: "row g-3 align-items-start mb-4" do |form| %>
+    <div class="col-12 col-md-3">
+      <%= form.text_field :name,
+                          placeholder: Profile.human_attribute_name(:name),
+                          class: "form-control #{'is-invalid' if profile.errors[:name].any?}" %>
 
-        <ul>
-          <% profile.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div>
-      <%= form.label :name, style: 'display: block' %>
-      <%= form.text_field :name %>
+      <% if profile.errors[:name].any? %>
+        <div class="form-text">
+          <%= profile.errors.full_messages_for(:name).first %>
+        </div>
+      <% end %>
     </div>
 
-    <div>
-      <%= form.label :github_url, style: 'display: block' %>
-      <%= form.text_field :github_url %>
+    <div class="col-12 col-md-3">
+      <%= form.text_field :github_url,
+                          placeholder: Profile.human_attribute_name(:github_url),
+                          class: "form-control #{'is-invalid' if profile.errors[:github_url].any?}" %>
+
+      <% if profile.errors[:github_url].any? %>
+        <div class="form-text">
+          <%= profile.errors.full_messages_for(:github_url).first %>
+        </div>
+      <% end %>
     </div>
 
-    <div>
-      <%= form.submit %>
+    <div class="col-12 col-md-auto">
+      <%= form.submit class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

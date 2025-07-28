@@ -2,7 +2,7 @@ pt-BR:
   helpers:
     submit:
       profile:
-        create: Criar perfil
+        create: Salvar
         update: Atualizar perfil
   activerecord:
     models:
@@ -16,7 +16,7 @@ pt-BR:
         followers_count: Seguidores
         following_count: Seguindo
         stars_count: Estrelas
-        contributions_12mo_count: Contribuições no último ano
+        contributions_12mo_count: Contribuições
         organization: Organização
         location: Localização
     errors:
@@ -30,6 +30,8 @@ pt-BR:
       destroy: Deletar
       back: Voltar
       destroy_confirmation: Tem certeza que deseja deletar este perfil?
+      title: Dados do perfil
+      confirm_delete: Tem certeza que deseja deletar este perfil?
     create:
       success: Perfil criado com sucesso!
     destroy:
@@ -45,10 +47,11 @@ pt-BR:
     index:
       view_profile: Visualizar
       edit: Editar
+      search: Buscar
       actions: Ações
       title_list: Listagem de perfis
       title_new_profile: Novo perfil
-      search_placeholder: Digite o termo da busca ...
+      search_placeholder: Digite o termo da busca
     form:
       errors:
         title:

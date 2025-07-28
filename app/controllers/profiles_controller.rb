@@ -36,15 +36,13 @@ class ProfilesController < ApplicationController
     scraper_result = Github::ProfileScraper.call(@profile.github_url)
 
     unless scraper_result.success?
-      flash.now[:alert] = t(scraper_result.error, scope: 'profiles.errors')
-      return render turbo_stream: turbo_stream.replace('flash', partial: 'shared/flash')
+      @alert_message = t(scraper_result.error, scope: 'profiles.errors')
+      return render turbo_stream: turbo_stream.replace(
+        'message', partial: 'shared/message', locals: { alert: @alert_message }
+      )
     end
 
-    if @profile.update(scraper_result.data.symbolize_keys)
-      flash.now[:notice] = t('.success')
-    else
-      flash.now[:alert] = t('.failure')
-    end
+    @profile.update(scraper_result.data.symbolize_keys)
 
     render :rescan, formats: :turbo_stream
   end

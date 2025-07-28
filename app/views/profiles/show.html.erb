@@ -1,27 +1,29 @@
-<%= turbo_frame_tag 'flash' do %>
-  <%= render 'shared/flash' %>
-<% end %>
+<div class="d-flex flex-column align-items-center">
+  <h1><%= t('.title') %></h1>
 
-<%= turbo_frame_tag dom_id(@profile) do %>
-  <%= render @profile %>
-<% end %>
+  <div class="card shadow w-100 mx-auto" style="max-width: 37.5rem">
+    <div class="card-body d-flex flex-column align-items-center px-5">
+      <%= render @profile %>
 
-<div class="actions-inline">
-  <%= button_to t('.rescan'),
-                rescan_profile_path(@profile),
-                data: { turbo_frame: dom_id(@profile) },
-                method: :patch %>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <%= button_to t('.rescan'),
+                      rescan_profile_path(@profile),
+                      data: { turbo_frame: dom_id(@profile) },
+                      method: :patch,
+                      class: 'btn btn-secondary' %>
 
-  <%= link_to t('.edit'), edit_profile_path(@profile, from: 'show') %>
+        <%= link_to t('.edit'),
+                    edit_profile_path(@profile, from: 'show'),
+                    class: 'btn btn-outline-primary' %>
 
-  <%= button_to t('.destroy'), @profile, method: :delete %>
+        <%= button_to t('.destroy'),
+                      @profile,
+                      method: :delete,
+                      data: { turbo_confirm: t('.confirm_delete') },
+                      class: 'btn btn-danger' %>
 
-  <%= link_to t('.back'), profiles_path %>
+        <%= link_to t('.back'), profiles_path, class: 'btn btn-outline-dark' %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<style>
-  .actions-inline > * {
-    display: inline-block;
-    margin-right: 8px;
-  }
-</style>

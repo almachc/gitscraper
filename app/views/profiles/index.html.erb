@@ -1,28 +1,36 @@
 <% content_for :title, t('.title') %>
 
-<%= render 'shared/message' %>
-
-<div>
+<section>
   <h1><%= t('.title_new_profile') %></h1>
   <%= render 'form', profile: Profile.new %>
-<div>
+</section>
 
-<div>
+<section>
   <h1><%= t('.title_list') %></h1>
 
-  <%= form_with url: profiles_path, method: :get, data: { turbo_frame: 'profiles_list' } do |form| %>
-    <%= form.select :field,
-                    options_for_select(profiles_select_fields, params[:field]),
-                    {},
-                    class: 'form-select' %>
+  <%= form_with url: profiles_path,
+                method: :get,
+                data: { turbo_frame: 'profiles_list' },
+                class: "row g-3 align-items-center mb-4" do |form| %>
 
-    <%= form.text_field :term, placeholder: t('.search_placeholder'), value: params[:term] %>
-    <%= form.submit "Buscar", class: 'btn btn-primary' %>
+    <div class="col-12 col-md-2">
+      <%= form.select :field,
+                      options_for_select(profiles_select_fields, params[:field]),
+                      {},
+                      class: 'form-select' %>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <%= form.text_field :term, placeholder: t('.search_placeholder'), value: params[:term],
+                          class: 'form-control' %>
+    </div>
+
+    <div class="col-12 col-md-auto">
+      <%= form.submit t('.search'), class: 'btn btn-primary' %>
+    </div>
   <% end %>
-
-  <br>
 
   <%= turbo_frame_tag 'profiles_list' do %>
     <%= render 'profiles/list', profiles: @profiles, translation_scope: 'profiles.index' %>
   <% end %>
-</div>
+</section>

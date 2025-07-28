@@ -1,5 +1,7 @@
-<div id="<%= dom_id profile %>">
-  <%= image_tag(profile.avatar_url, width: 150) %>
+<%= turbo_frame_tag dom_id(@profile) do %>
+  <div class="text-center mb-4">
+    <%= image_tag profile.avatar_url, width: 120, class: "rounded-circle" %>
+  </div>
 
   <p>
     <strong><%= Profile.human_attribute_name(:github_url) %>:</strong>
@@ -21,4 +23,4 @@
       <%= profile.public_send(attribute) %>
     </p>
   <% end %>
-</div>
+<% end %>

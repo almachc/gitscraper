@@ -9,12 +9,12 @@ class Profile < ApplicationRecord
 
   has_one :short_url_mapping, as: :mappable, dependent: :destroy
 
-  validates :name, :github_url, presence: true, on: :user_input
+  validates :name, :github_url, presence: true, on: [ :user_input, :create, :update ]
 
   validates :username, :avatar_url, :followers_count, :following_count,
-            :stars_count, :contributions_12mo_count, presence: true, on: :create
+            :stars_count, :contributions_12mo_count, presence: true, on: [ :create, :update ]
 
-  validates :username, uniqueness: true
+  validates :username, :github_url, uniqueness: true, on: [ :user_input, :create, :update ]
 
   after_create :create_associated_url_mapping!
   after_update :update_associated_url_mapping!, if: :saved_change_to_github_url?

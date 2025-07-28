@@ -23,6 +23,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+          <%= link_to "GitScraper", root_path, class: "navbar-brand" %>
+        </div>
+      </nav>
+    </header>
+    <main class="container pb-4">
+      <%= render "shared/message" %>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -29,7 +29,7 @@ RSpec.describe Github::ProfileScraper do
           location: 'Springfield, USA',
           stars_count: '12',
           avatar_url: 'https://avatars.githubusercontent.com/u/3301',
-          contributions_count: 247
+          contributions_12mo_count: 247
         )
       end
     end
@@ -52,20 +52,11 @@ RSpec.describe Github::ProfileScraper do
         stub_request(:get, github_url).to_return(status: 200, body: github_response)
       end
 
-      it 'returns an object with nil values' do
+      it 'returns a failure object' do
         result = described_class.call(github_url)
 
-        expect(result.success?).to be true
-        expect(result.data).to include(
-          username: nil,
-          followers_count: nil,
-          following_count: nil,
-          organization: nil,
-          location: nil,
-          stars_count: nil,
-          avatar_url: nil,
-          contributions_count: nil
-        )
+        expect(result.success?).not_to be true
+        expect(result.error).to eq(:scraped_data_missing)
       end
     end
 
@@ -91,8 +82,8 @@ RSpec.describe Github::ProfileScraper do
       it 'returns a failure object' do
         result = described_class.call(github_url)
 
-        expect(result).to be_success
-        expect(result.data[:contributions_count]).to eq(nil)
+        expect(result.success?).not_to be true
+        expect(result.error).to eq(:scraped_data_missing)
       end
     end
 
