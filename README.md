@@ -47,5 +47,5 @@ docker compose run --rm --service-ports web bash
 - Melhoria no layout das páginas (ex: toast com stimulus para mensagens de feedback)
 - Melhoria no tratamento de erros
 - Paginação na listagem de perfis
-- Melhoraria na cobertura de testes (unitários, request e aceitação com capybara)
+- Melhoria na cobertura de testes (unitários, request e aceitação com capybara)
 - Implementação de logs técnicos para monitoramento de erros
