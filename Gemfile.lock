@@ -113,7 +113,7 @@ GEM
     factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.13.2)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -154,7 +154,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.12.2)
+    json (2.13.2)
     kamal (2.7.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -413,7 +413,7 @@ DEPENDENCIES
   dartsass-rails (~> 0.5.1)
   debug
   factory_bot_rails (~> 6.5)
-  faraday (~> 2.13, >= 2.13.2)
+  faraday (~> 2.13)
   importmap-rails
   jbuilder
   kamal
