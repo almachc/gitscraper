@@ -40,7 +40,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'faraday', '~> 2.13', '>= 2.13.2'
+gem 'faraday', '~> 2.13'
 gem 'nokogiri', '~> 1.18', '>= 1.18.8'
 gem 'bootstrap', '~> 5.3', '>= 5.3.5'
 gem 'dartsass-rails', '~> 0.5.1'
