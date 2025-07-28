@@ -39,13 +39,13 @@ docker compose run --rm --service-ports web bash
 - Internacionalização (i18n) – Textos adaptados para português via dicionários YAML
 - Validações com ActiveRecord e tratamento de exceções – Garantia de integridade e consistência dos dados no modelo e nos serviços
 - Arquitetura RESTful – Estrutura de controllers e rotas seguindo as convenções REST do Rails
+- Layout responsivo com Bootstrap
 - Testes automatizados com RSpec, FactoryBot, ShouldaMatchers e Webmock
 - Docker e Docker Compose – Containerização para ambiente de desenvolvimento
 
 ## Pontos de melhoria
-- Instalação do tailwind, estilização e organização das views
-- Funcionalidade de busca com índices no banco
+- Melhoria no layout das páginas (ex: toast com stimulus para mensagens de feedback)
+- Melhoria no tratamento de erros
 - Paginação na listagem de perfis
-- Encurtamento de url (slug -> url original)
 - Melhoraria na cobertura de testes (unitários, request e aceitação com capybara)
 - Implementação de logs técnicos para monitoramento de erros
